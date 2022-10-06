@@ -7,7 +7,7 @@ import theme from '../theme.js';
 
 const RepositoryItemHeader = ({ ownerAvatarUrl, fullName, description, language }) => (
     <View style={{ flexDirection: 'row', paddingBottom: 2 }}>
-        <View style={{ flex: 0, paddingButton: 2 }}>
+        <View style={{ paddingRight: 10 }}>
             <Image style={styles.image} source={{ uri: ownerAvatarUrl }} />
         </View>
         <View style={{ flex: 1 }}>

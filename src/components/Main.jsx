@@ -1,15 +1,24 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import RepositoryList from './RepositoryList.jsx';
 import AppBar from './AppBar.jsx';
+import { Redirect, Route, Switch } from 'react-native-web';
 
 const Main = () => {
     return (
         <View style={{ flex: 1 }}>
             <AppBar />
-            <RepositoryList />
+            <Switch>
+                <Route path='/' exact>
+                    <RepositoryList />
+                </Route>
+                <Route path='/singin' exact>
+                    <Text>Working on it</Text>
+                </Route>
+                <Redirect to='/' />
+            </Switch>
         </View>
-    );
+    )
 }
 
 export default Main;
