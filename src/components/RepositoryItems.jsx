@@ -5,12 +5,22 @@ import RepositoryStarts from './RepositoryStarts.jsx'
 import theme from '../theme.js';
 
 
+const RepositoryItemHeader = ({ ownerAvatarUrl, fullName, description, language }) => (
+    <View style={{ flexDirection: 'row', paddingBottom: 2 }}>
+        <View style={{ flex: 0, paddingButton: 2 }}>
+            <Image style={styles.image} source={{ uri: ownerAvatarUrl }} />
+        </View>
+        <View style={{ flex: 1 }}>
+            <StyledText fontWeight='bold'>FullName: {fullName} </StyledText>
+            <StyledText color='secondary'> {description} </StyledText>
+            <StyledText style={styles.language}> {language} </StyledText>
+        </View>
+    </View>
+)
+
 const RepositoryItem = (props) => (
     <View key={props.id} style={styles.containder}>
-        <Image style={styles.image} source={{ uri: props.ownerAvatarUrl }} />
-        <StyledText fontSize='subheading' fontWeight='bold'>FullName: {props.fullName} </StyledText>
-        <StyledText> {props.description} </StyledText>
-        <StyledText style={styles.language}> {props.language} </StyledText>
+        <RepositoryItemHeader {...props} />
         <RepositoryStarts {...props} />
     </View>
 )
@@ -18,14 +28,14 @@ const RepositoryItem = (props) => (
 const styles = StyleSheet.create({
     containder: {
         padding: 20,
-        paddingBottom: 5,
-        paddingTop: 5
+        paddingVertical:5
     },
     language: {
         padding: 4,
         color: theme.colors.white,
         backgroundColor: theme.colors.primary,
         alignSelf: 'flex-start',
+        marginVertical: 4,
         borderRadius: 4,
         overflow: 'hidden'
     },
