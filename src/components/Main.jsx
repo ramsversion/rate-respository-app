@@ -2,21 +2,18 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import RepositoryList from './RepositoryList.jsx';
 import AppBar from './AppBar.jsx';
-import { Redirect, Route, Switch } from 'react-native-web';
+import { Routes, Route, Navigate } from 'react-router-native';
 
 const Main = () => {
     return (
         <View style={{ flex: 1 }}>
             <AppBar />
-            <Switch>
-                <Route path='/' exact>
-                    <RepositoryList />
-                </Route>
-                <Route path='/singin' exact>
-                    <Text>Working on it</Text>
-                </Route>
-                <Redirect to='/' />
-            </Switch>
+
+            <Routes>
+                <Route exact path="/" element={<RepositoryList />} />
+                <Route path='/signin' element={<Text>Working on it</Text>} />
+                <Route path="*" element={<Navigate replace to="/" />} />
+            </Routes>
         </View>
     )
 }
