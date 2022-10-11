@@ -5,7 +5,7 @@ module.exports = async function (env, argv) {
     const config = await createExpoWebpackConfigAsync(env, argv);
     config.module.rules.push({
         test: /\.js$/,
-        exclude:/node_modules/,
+        //exclude:/node_modules/,
         loader: 'babel-loader',
         include: [
             path.join(__dirname, 'node_modules/react-router-native')
@@ -14,4 +14,3 @@ module.exports = async function (env, argv) {
 
     return config;
 }
-//1:34
